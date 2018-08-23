@@ -7,6 +7,8 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
@@ -18,11 +20,21 @@ public class Controller {
     private Label lblFilePath;
 
     @FXML
+    private RadioButton rBtnTable;
+    @FXML
+    private RadioButton rBtnPolynom;
+
+    @FXML
     private LineChart<Float,Float> lineChartExpData;
     @FXML
     private NumberAxis xAxis;
     @FXML
     private NumberAxis yAxis;
+
+    @FXML
+    private AnchorPane aPaneTable;
+    @FXML
+    private AnchorPane aPanePolynom;
 
 
     public void btnChooseFileClicked(){
@@ -38,9 +50,13 @@ public class Controller {
             lblFilePath.setText(file.getPath());
         }
 
+
     }
 
     public void btnLoadDataClicked(){
+        aPaneTable.setDisable(true);
+
+
         //Defining X axis
         xAxis.setLabel("dsfxcvsdfxcvbr");
 
@@ -54,5 +70,17 @@ public class Controller {
         series.getData().add(new XYChart.Data(2013, 240));
         series.getData().add(new XYChart.Data(2014, 300));
         lineChartExpData.getData().add(series);
+    }
+
+    public void rBtnTableClicked(){
+        rBtnPolynom.setSelected(false);
+        aPanePolynom.setDisable(true);
+        aPaneTable.setDisable(false);
+    }
+
+    public void rBtnPolynomClicked(){
+        rBtnTable.setSelected(false);
+        aPanePolynom.setDisable(false);
+        aPaneTable.setDisable(true);
     }
 }
