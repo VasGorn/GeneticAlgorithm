@@ -10,8 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import model.Polynom;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Controller {
     @FXML
@@ -56,19 +58,20 @@ public class Controller {
     public void btnLoadDataClicked(){
         aPaneTable.setDisable(true);
 
-
-        //Defining X axis
-        xAxis.setLabel("dsfxcvsdfxcvbr");
+        xAxis.setLabel("Ось абцисс");
+        yAxis.setLabel("Ось ординат");
 
         XYChart.Series series = new XYChart.Series();
-        series.setName("No of schools in an year");
+        series.setName("Полином");
 
-        series.getData().add(new XYChart.Data(1970, 15));
-        series.getData().add(new XYChart.Data(1980, 30));
-        series.getData().add(new XYChart.Data(1990, 60));
-        series.getData().add(new XYChart.Data(2000, 120));
-        series.getData().add(new XYChart.Data(2013, 240));
-        series.getData().add(new XYChart.Data(2014, 300));
+        Polynom polynom = new Polynom(0,0,0,0,0,0,1,0,0,3,0.0001);
+        ArrayList<Double> arrayList = polynom.getFunctionArray();
+
+        for(int i = 0; i < polynom.getIntSteps(); ++i){
+            series.getData().add(new XYChart.Data(i, arrayList.get(i)));
+            if(i%1000 == 0) System.out.println(i);
+        }
+
         lineChartExpData.getData().add(series);
     }
 
@@ -82,5 +85,9 @@ public class Controller {
         rBtnTable.setSelected(false);
         aPanePolynom.setDisable(false);
         aPaneTable.setDisable(true);
+    }
+
+    public void btnCancelClicked(){
+        System.exit(0);
     }
 }

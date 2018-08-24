@@ -24,7 +24,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <LineChart fx:id="lineChartExpData" layoutX="469.0" layoutY="133.0" title="График данных">
+      <LineChart fx:id="lineChartExpData" createSymbols="false" layoutX="469.0" layoutY="133.0" title="График данных">
         <xAxis>
           <NumberAxis side="BOTTOM" fx:id="xAxis" />
         </xAxis>
@@ -201,7 +201,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnCancel" mnemonicParsing="false" text="Отмена">
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelClicked" text="Отмена">
                <font>
                   <Font size="14.0" />
                </font>
