@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+<AnchorPane fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
    <children>
       <Text layoutX="284.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Результирующая функция" textAlignment="CENTER" wrappingWidth="447.328125">
          <font>
@@ -196,7 +196,7 @@
       </SplitPane>
       <HBox layoutX="779.0" layoutY="635.0" spacing="20.0">
          <children>
-            <Button fx:id="btnNext" mnemonicParsing="false" text="Далее &gt;">
+            <Button fx:id="btnNext" mnemonicParsing="false" onAction="#btnNextClicked" text="Далее &gt;">
                <font>
                   <Font size="14.0" />
                </font>

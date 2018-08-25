@@ -1,6 +1,8 @@
 package controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -11,9 +13,15 @@ import javafx.stage.FileChooser;
 import model.Polynom;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class Controller {
+public class Controller implements Initializable {
+    @FXML
+    private AnchorPane rootAnchorPane;
+
     @FXML
     private Button btnChooseFile;
     @FXML
@@ -100,6 +108,12 @@ public class Controller {
         aPaneTable.setDisable(true);
     }
 
+
+    public void btnNextClicked() throws IOException {
+        AnchorPane root = FXMLLoader.load(getClass().getResource("../fxml/optimization_stage.fxml"));
+        rootAnchorPane.getChildren().setAll(root);
+    }
+
     public void btnCancelClicked(){
         System.exit(0);
     }
@@ -174,5 +188,10 @@ public class Controller {
         alert.setContentText(content);
 
         alert.showAndWait();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
     }
 }
