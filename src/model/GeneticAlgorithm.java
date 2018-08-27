@@ -8,5 +8,5 @@ public class GeneticAlgorithm {
     private static final boolean elitism = true;
 
     //TODO perform ALGORITHM !!
-
+    
 }

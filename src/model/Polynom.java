@@ -33,16 +33,19 @@ public class Polynom {
 
         double value;
         for(int i = 0; i < intSteps; ++i){
-            value = a8 * Math.pow(i*stepSize,9) +
-                    a8 * Math.pow(i*stepSize,8) +
-                    a7 * Math.pow(i*stepSize,7) +
-                    a6 * Math.pow(i*stepSize,6) +
-                    a5 * Math.pow(i*stepSize,5) +
-                    a4 * Math.pow(i*stepSize,4) +
-                    a3 * Math.pow(i*stepSize,3) +
-                    a2 * Math.pow(i*stepSize,2) +
-                    a1 * Math.pow(i*stepSize,1) +
-                    a0;
+            value = 0;
+            double[] arrayCoef = {a0, a1, a2, a3,
+                                  a4, a5, a6, a7,
+                                  a8, a9};
+
+            //value of polynom
+            double pow = 1;
+            for(int j = 1; j <= 9; ++j){
+                pow *= (i * stepSize);
+                value += arrayCoef[j] * pow;
+            }
+            value += arrayCoef[0];
+
             functionArray.add(value);
         }
     }
