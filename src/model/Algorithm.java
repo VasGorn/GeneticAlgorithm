@@ -30,7 +30,10 @@ public class Algorithm {
         for(int i = startIndex; i < pop.size(); ++i){
             Individual ind1 = tournamentSelection(pop);
             Individual ind2 = tournamentSelection(pop);
+
             Individual newIndiv = crossover(ind1, ind2);
+
+            newPopulation.saveIndividual(i, newIndiv);
         }
 
         // mutate the population
@@ -74,5 +77,5 @@ public class Algorithm {
         Individual fittest = tournament.getFittest();
         return fittest;
     }
-    
+
 }
