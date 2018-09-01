@@ -6,9 +6,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import model.Algorithm;
-import model.FitnessCalc;
-import model.Population;
+import model.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,19 +23,24 @@ public class EvolveStage implements Initializable {
     private NumberAxis yAxis;
 
     public void btnStartEvolveClicked(){
-        FitnessCalc.setSolution("1111000000000000000000000000000000000000000000000000000000001111");
-        Population myPop = new Population(50, true);
+        FitnessCalc.setSolution("1111000000000000000000000000000001000000000000000000000000001111");
+        Population myPop = new Population(5, true);
+
+        Selection tornSel = new Selection(Selection.TOURNAMENT);
+        Crossover unifCross = new Crossover(Crossover.UNIFORM);
+
+        Algorithm algorithm = new Algorithm(myPop,true,tornSel,
+                                            unifCross,0.017);
 
         int generationCount = 0;
 
         XYChart.Series series = prepareChart();
 
-
         while (myPop.getFittest().getFitness() < FitnessCalc.getNumMaxFitness()){
             generationCount++;
             System.out.println("Generation: " + generationCount +
                                " Fittest: " + myPop.getFittest().getFitness());
-            myPop = Algorithm.evolvePopulation(myPop);
+            myPop = algorithm.evolvePopulation(myPop);
 
             series.getData().add(new XYChart.Data(generationCount, myPop.getFittest().getFitness()));
 
