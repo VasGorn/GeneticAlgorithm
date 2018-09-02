@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import model.*;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class EvolveStage implements Initializable {
@@ -25,6 +26,14 @@ public class EvolveStage implements Initializable {
     public void btnStartEvolveClicked(){
         FitnessCalc.setSolution("1111000000000000000000000000000001000000000000000000000000001111");
         Population myPop = new Population(5, true);
+
+        System.out.println("TEST SORTING ...........");
+        System.out.println("BEFORE:\n" + myPop.toString());
+
+        Selection.insertIntoSort(myPop.getIndividualsArray());
+
+        System.out.println("AFTER:\n" + myPop.toString());
+
 
         Selection tornSel = new Selection(Selection.TOURNAMENT);
         Crossover unifCross = new Crossover(Crossover.UNIFORM);
@@ -51,6 +60,7 @@ public class EvolveStage implements Initializable {
         System.out.println(myPop.getFittest());
 
         chartEvolve.getData().add(series);
+
     }
 
     private XYChart.Series prepareChart(){

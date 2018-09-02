@@ -36,7 +36,20 @@ public class Population {
         return individuals.length;
     }
 
+    public Individual[] getIndividualsArray(){
+        return  individuals;
+    }
+
     public void saveIndividual(int index, Individual indiv){
         individuals[index] = indiv;
+    }
+
+    @Override
+    public String toString() {
+        String str = "";
+        for(int i = 0; i < individuals.length; ++i){
+            str += individuals[i] + " Fitness: " + individuals[i].getFitness() + "\n";
+        }
+        return str;
     }
 }
